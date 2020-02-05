@@ -40,25 +40,29 @@ import com.android.wallpaper.picker.ToolbarFragment;
 
 public class CustomThemeComponentFragment extends CustomThemeStepFragment {
     private static final String ARG_USE_GRID_LAYOUT = "CustomThemeComponentFragment.use_grid";;
+    private static final String ARG_KEY_MESSAGE_RES_ID = "CustomThemeComponentFragment.message_res";
 
     public static CustomThemeComponentFragment newInstance(CharSequence toolbarTitle, int position,
             int titleResId) {
-        return newInstance(toolbarTitle, position, titleResId, false);
+        return newInstance(toolbarTitle, position, titleResId, false, R.string.no_options_message_default);
     }
 
     public static CustomThemeComponentFragment newInstance(CharSequence toolbarTitle, int position,
-            int titleResId, boolean allowGridLayout) {
+            int titleResId, boolean allowGridLayout, int messageResId) {
         CustomThemeComponentFragment fragment = new CustomThemeComponentFragment();
         Bundle arguments = ToolbarFragment.createArguments(toolbarTitle);
         arguments.putInt(ARG_KEY_POSITION, position);
         arguments.putInt(ARG_KEY_TITLE_RES_ID, titleResId);
         arguments.putBoolean(ARG_USE_GRID_LAYOUT, allowGridLayout);
+        arguments.putInt(ARG_KEY_MESSAGE_RES_ID, messageResId);
         fragment.setArguments(arguments);
         return fragment;
     }
 
     private ThemeComponentOptionProvider<? extends ThemeComponentOption> mProvider;
     private boolean mUseGridLayout;
+    @StringRes
+    protected int mMessageResId;
 
     private RecyclerView mOptionsContainer;
     private OptionSelectorController<ThemeComponentOption> mOptionsController;
@@ -69,6 +73,7 @@ public class CustomThemeComponentFragment extends CustomThemeStepFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mUseGridLayout = getArguments().getBoolean(ARG_USE_GRID_LAYOUT);
+        mMessageResId = getArguments().getInt(ARG_KEY_MESSAGE_RES_ID);
         mProvider = mHost.getComponentOptionProvider(mPosition);
     }
 
@@ -128,7 +133,7 @@ public class CustomThemeComponentFragment extends CustomThemeStepFragment {
                 mSelectedOption = null;
                 mOptionsContainer.setVisibility(View.GONE);
                 mOptionsMessage.setVisibility(View.VISIBLE);
-                mOptionsMessage.setText(R.string.no_options_message);
+                mOptionsMessage.setText(mMessageResId);
             }
         }, true);
     }

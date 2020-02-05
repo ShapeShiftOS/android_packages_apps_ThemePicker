@@ -358,7 +358,8 @@ public class CustomThemeActivity extends FragmentActivity implements
                     title,
                     position,
                     titleResId,
-                    true);
+                    true,
+                    R.string.no_options_message_default);
         }
     }
 
@@ -375,7 +376,8 @@ public class CustomThemeActivity extends FragmentActivity implements
                     title,
                     position,
                     titleResId,
-                    true);
+                    true,
+                    R.string.no_options_message_primary);
         }
     }
 
