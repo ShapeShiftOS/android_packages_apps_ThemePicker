@@ -71,10 +71,6 @@
             android:id="@+id/component_options_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
             android:textAlignment="center"
             android:textAppearance="@style/HeaderTextAppearance"
             android:textSize="@dimen/component_options_title_size"
@@ -82,12 +78,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/component_preview_container"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias=".15"/>
+            app:layout_constraintVertical_bias=".08"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/options_container"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/options_container_height"
+            android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
             android:scrollbars="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -95,12 +91,12 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/component_options_title"
-            app:layout_constraintVertical_bias=".25"/>
+            app:layout_constraintVertical_bias=".30"/>
 
         <TextView
             android:id="@+id/options_container_message"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/options_container_height"
+            android:layout_height="0dp"
             android:layout_gravity="center"
             android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -108,7 +104,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/component_options_title"
-            app:layout_constraintVertical_bias=".25"
+            app:layout_constraintVertical_bias=".30"
             android:visibility="gone" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
